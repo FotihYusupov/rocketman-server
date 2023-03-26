@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-DATABASEni Swaggerda yozamiz    
-=======
-
->>>>>>> 2a013c6bed644afab9f73d16cede36b511a74aba
