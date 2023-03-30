@@ -1,16 +1,17 @@
+/* eslint-disable prettier/prettier */
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'admins' })
+@Entity({ name: 'amdinsss' })
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  admin_id: number;
 
   @Column({
     type: 'varchar',
     length: 32,
     nullable: false
   })
-  user_name: string;
+  admin_name: string;
 
   @Column({
     type: 'varchar',
@@ -23,5 +24,5 @@ export class User extends BaseEntity {
     type: 'enum',
     nullable: false
   })
-  user_role: 'SuperAdmin' | 'Admin'
+  admin_role: 'SuperAdmin' | 'Admin'
 }
