@@ -1,18 +1,25 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import {join} from 'path'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
+import { User } from './modules/user/user.entity';
+
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    // ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
-      connectString: process.env.CONNECTION_STRING,
-      entities: [__dirname + '../entities/*.entity.{ts,js}'],
+      type: 'postgres',
+      username: 'postgres',
+      database: 'demo',
+      port: 5432,
+      host: 'localhost',
+      password: 'Apple@8800',
+      entities: [User],
       synchronize: true,
     }),
     UserModule,
   ],
-  controllers: [],
 })
 export class AppModule {}
