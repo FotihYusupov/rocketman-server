@@ -1,0 +1,9 @@
+postgres://khjtvjls:Dt-DyZWFGuotWjZiCFLXEHqWbSabFWPQ@tiny.db.elephantsql.com/khjtvjls
+
+
+type: 'postgres',
+host: 'tiny.db.elephantsql.com',
+port: 5432,
+username: 'khjtvjls',
+password: 'Dt-DyZWFGuotWjZiCFLXEHqWbSabFWPQ',
+database: 'khjtvjls',
