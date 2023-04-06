@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './modules/user/user.module';
 import { User } from './modules/user/user.entity';
 import { DriversModule } from './modules/drivers/drivers.module';
+import { CategoryModule } from './modules/category/category.module';
+import { Category } from './modules/category/category.entity';
 
 @Module({
   imports: [
@@ -17,11 +19,12 @@ import { DriversModule } from './modules/drivers/drivers.module';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User],
+      entities: [User, Category],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
+    CategoryModule,
   ],
 })
 export class AppModule {}
