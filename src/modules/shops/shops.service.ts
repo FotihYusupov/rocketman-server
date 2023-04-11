@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Shops } from './shops.entity';
 import { Repository } from 'typeorm';
 import { CreateShopsDto } from './dto/create-shops.dto';
+import { UpdateShopsDto } from './dto/update-shops.dto';
 
 @Injectable()
 export class ShopsService {
@@ -24,7 +25,7 @@ export class ShopsService {
     return shops
   }
 
-  async update(id: number, body: any) {
+  async update(id: number, body: UpdateShopsDto) {
     await this.shopsRepo.update({ id }, body)
     return await this.shopsRepo.findOneBy({ id })
   }
