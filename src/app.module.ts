@@ -8,6 +8,7 @@ import { User } from './modules/user/user.entity';
 import { DriversModule } from './modules/drivers/drivers.module';
 import { CategoryModule } from './modules/category/category.module';
 import { Category } from './modules/category/category.entity';
+import { Driver } from './modules/drivers/driver.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { Category } from './modules/category/category.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category],
+      entities: [User, Category, Driver],
       synchronize: true,
     }),
     UserModule,
