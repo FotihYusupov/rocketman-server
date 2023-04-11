@@ -25,7 +25,12 @@ export class UserService {
     return user
   }
 
-  async update(data: UpdateUserDto) {
-    return this.userRepo.update(data)
+  async update(id: number, body: UpdateUserDto) {
+    await this.userRepo.update({ id }, body);
+    return await this.userRepo.findOneBy({ id });
+  }
+
+  remove(id: number) {
+    return this.userRepo.delete({ id: id });
   }
 }

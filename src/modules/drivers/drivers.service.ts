@@ -1,26 +1,36 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Driver } from './driver.entity';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
 
 @Injectable()
 export class DriversService {
-  create(createDriverDto: CreateDriverDto) {
-    return 'This action adds a new driver';
+  constructor(
+    @InjectRepository(Driver) private readonly DriverRepo: Repository<Driver>,
+  ) {}
+
+  async create(data: CreateDriverDto) {
+    const driver = this.DriverRepo.create(data);
+    await this.DriverRepo.save(driver);
+    return driver;
   }
 
   findAll() {
-    return `This action returns all drivers`;
+    return this.DriverRepo.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} driver`;
+  async findOne(id: number) {
+    return await this.DriverRepo.findOneBy({ id });
   }
 
-  update(id: number, updateDriverDto: UpdateDriverDto) {
-    return `This action updates a #${id} driver`;
+  async update(id: number, body: UpdateDriverDto) {
+    await this.DriverRepo.update({ id }, body);
+    return await this.DriverRepo.findOneBy({ id });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} driver`;
+    return this.DriverRepo.delete({ id: id });
   }
 }
