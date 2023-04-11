@@ -25,7 +25,7 @@ export class UserService {
     return user
   }
 
-  // async update(data: UpdateUserDto) {
-  //   return this.userRepo.update(data)
-  // }
+  async update(data: UpdateUserDto) {
+    return this.userRepo.update(data)
+  }
 }
