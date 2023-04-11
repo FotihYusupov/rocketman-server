@@ -8,18 +8,19 @@ import { User } from './modules/user/user.entity';
 import { DriversModule } from './modules/drivers/drivers.module';
 import { CategoryModule } from './modules/category/category.module';
 import { Category } from './modules/category/category.entity';
+import { Driver } from './modules/drivers/driver.entity';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      username: process.env.PG_USER,
-      database: process.env.PG_DATABASE,
+      username: 'postgres',
+      database: 'demo',
       port: 5432,
-      host: process.env.PG_HOST,
-      password: process.env.PG_PASSWORD,
-      entities: [User, Category],
+      host: 'localhost',
+      password: 'Apple@8800',
+      entities: [User, Category, Driver],
       synchronize: true,
     }),
     UserModule,

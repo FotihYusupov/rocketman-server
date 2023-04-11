@@ -20,10 +20,10 @@ export class DriversController {
     return this.driversService.create(createDriverDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.driversService.findAll();
-  // }
+  @Get()
+  findAll() {
+    return this.driversService.findAll();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
