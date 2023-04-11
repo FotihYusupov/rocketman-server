@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Category } from './category.entity';
 import { Repository } from 'typeorm';
 import { CreateCategoryDto } from './dto/create-category.dto';
+import { UpdateCategoryDto } from './dto/update-category.dto';
 
 @Injectable()
 export class CategoryService {
@@ -26,7 +27,7 @@ export class CategoryService {
     return category
   }
 
-  async update(id: number, body: any) {
+  async update(id: number, body: UpdateCategoryDto) {
     await this.categoryRepo.update({ id }, body)
     return await this.categoryRepo.findOneBy({ id })
   }
