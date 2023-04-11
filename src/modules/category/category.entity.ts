@@ -1,4 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Shops } from '../shops/shops.entity';
+
+enum Status {
+  On = "on",
+  Off = "off"
+}
 
 @Entity({ name: 'category' })
 export class Category extends BaseEntity {
@@ -13,9 +19,9 @@ export class Category extends BaseEntity {
   category_name: string;
 
   @Column({
-    type: 'varchar',
-    length: '5',
-    nullable: false,
+    type: 'enum',
+    enum: Status,
+    default: Status.On,
   })
   category_status: string;
 
@@ -23,5 +29,8 @@ export class Category extends BaseEntity {
     type: 'smallint',
     nullable: false,
   })
-  category_shops: string;
+  category_shops: number;
+
+  @OneToMany(() => Shops, (shops) => shops.categorys)
+  shops: Shops[]
 }

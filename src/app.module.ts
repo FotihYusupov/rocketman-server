@@ -8,7 +8,8 @@ import { User } from './modules/user/user.entity';
 import { DriversModule } from './modules/drivers/drivers.module';
 import { CategoryModule } from './modules/category/category.module';
 import { Category } from './modules/category/category.entity';
-import { Driver } from './modules/drivers/driver.entity';
+import { ShopsModule } from './modules/shops/shops.module';
+import { Shops } from './modules/shops/shops.entity';
 
 @Module({
   imports: [
@@ -20,12 +21,13 @@ import { Driver } from './modules/drivers/driver.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Driver],
+      entities: [User, Category, Shops],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
     CategoryModule,
+    ShopsModule,
   ],
 })
 export class AppModule {}

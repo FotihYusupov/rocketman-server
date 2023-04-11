@@ -1,14 +1,17 @@
 import { IsString, IsNotEmpty } from 'class-validator';
 
-export class CreateCategoryDto {
+export class UpdateShopsDto {
   @IsNotEmpty()
   @IsString()
-  category_name: string;
+  shop_name: string;
+
+  @IsNotEmpty()
+  shop_telefon: number;
 
   @IsNotEmpty()
   @IsString()
-  category_status: string;
+  shop_adress: string;
 
   @IsNotEmpty()
-  category_shops: number;
+  shop_tovar: number;
 }

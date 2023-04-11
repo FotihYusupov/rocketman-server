@@ -7,20 +7,31 @@ import { CreateCategoryDto } from './dto/create-category.dto';
 @Injectable()
 export class CategoryService {
   constructor(
-    @InjectRepository(Category) private readonly userRepo: Repository<Category>,
+    @InjectRepository(Category) private readonly categoryRepo: Repository<Category>,
   ) {}
 
   findAll() {
-    return this.userRepo.find();
+    return this.categoryRepo.find( {
+      relations:{shops: true}
+    });
   }
 
   async findOne(id: number) {
-    return await this.userRepo.findOneBy({ id })
+    return await this.categoryRepo.findOneBy({ id })
   }
 
   async create(data: CreateCategoryDto) {
-    const user = this.userRepo.create(data)
-    await this.userRepo.save(user)
-    return user
+    const category = await this.categoryRepo.create(data)
+    this.categoryRepo.save(category)
+    return category
+  }
+
+  async update(id: number, body: any) {
+    await this.categoryRepo.update({ id }, body)
+    return await this.categoryRepo.findOneBy({ id })
+  }
+
+  async delete(id: number) {
+    return await this.categoryRepo.delete({ id })
   }
 }
