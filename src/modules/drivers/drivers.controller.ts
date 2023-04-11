@@ -15,28 +15,28 @@ import { UpdateDriverDto } from './dto/update-driver.dto';
 export class DriversController {
   constructor(private readonly driversService: DriversService) {}
 
-  // @Post()
-  // create(@Body() createDriverDto: CreateDriverDto) {
-  //   return this.driversService.create(createDriverDto);
-  // }
+  @Post()
+  create(@Body() createDriverDto: CreateDriverDto) {
+    return this.driversService.create(createDriverDto);
+  }
 
   @Get()
-  findAll() {
+  getAll() {
     return this.driversService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.driversService.findOne(+id);
-  // }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.driversService.findOne(+id);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateDriverDto: UpdateDriverDto) {
-  //   return this.driversService.update(+id, updateDriverDto);
-  // }
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.driversService.remove(+id);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.driversService.remove(+id);
-  // }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() body: UpdateDriverDto) {
+    return this.driversService.update(+id, body);
+  }
 }
