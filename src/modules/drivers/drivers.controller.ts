@@ -15,15 +15,15 @@ import { UpdateDriverDto } from './dto/update-driver.dto';
 export class DriversController {
   constructor(private readonly driversService: DriversService) {}
 
-  @Post()
-  create(@Body() createDriverDto: CreateDriverDto) {
-    return this.driversService.create(createDriverDto);
-  }
-
-  // @Get()
-  // findAll() {
-  //   return this.driversService.findAll();
+  // @Post()
+  // create(@Body() createDriverDto: CreateDriverDto) {
+  //   return this.driversService.create(createDriverDto);
   // }
+
+  @Get()
+  findAll() {
+    return this.driversService.findAll();
+  }
 
   // @Get(':id')
   // findOne(@Param('id') id: string) {
