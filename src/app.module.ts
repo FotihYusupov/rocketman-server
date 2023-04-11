@@ -10,6 +10,7 @@ import { CategoryModule } from './modules/category/category.module';
 import { Category } from './modules/category/category.entity';
 import { ShopsModule } from './modules/shops/shops.module';
 import { Shops } from './modules/shops/shops.entity';
+import { Driver } from './modules/drivers/driver.entity';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { Shops } from './modules/shops/shops.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops],
+      entities: [User, Category, Shops, Driver],
       synchronize: true,
     }),
     UserModule,
