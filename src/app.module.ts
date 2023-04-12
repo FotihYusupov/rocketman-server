@@ -11,9 +11,11 @@ import { Category } from './modules/category/category.entity';
 import { ShopsModule } from './modules/shops/shops.module';
 import { Shops } from './modules/shops/shops.entity';
 import { Driver } from './modules/drivers/driver.entity';
+import { TaklifModule } from './modules/takliflar/takliflar.module';
+import { Taklif } from './modules/takliflar/takliflar.entity';
 
 @Module({
-  imports: [
+  imports: [  
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -22,13 +24,14 @@ import { Driver } from './modules/drivers/driver.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops, Driver],
+      entities: [User, Category, Shops, Driver, Taklif],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
     CategoryModule,
     ShopsModule,
+    TaklifModule
   ],
 })
 export class AppModule {}
