@@ -13,6 +13,8 @@ import { Shops } from './modules/shops/shops.entity';
 import { Driver } from './modules/drivers/driver.entity';
 import { TaklifModule } from './modules/takliflar/takliflar.module';
 import { Taklif } from './modules/takliflar/takliflar.entity';
+import { Payment } from './modules/payment/payment.entity';
+import { PaymentModule } from './modules/payment/payment.module';
 
 @Module({
   imports: [  
@@ -24,14 +26,15 @@ import { Taklif } from './modules/takliflar/takliflar.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops, Driver, Taklif],
+      entities: [User, Category, Shops, Driver, Taklif, Payment],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
     CategoryModule,
     ShopsModule,
-    TaklifModule
+    TaklifModule,
+    PaymentModule
   ],
 })
 export class AppModule {}
