@@ -12,11 +12,4 @@ export class CreateCategoryDto {
   @IsNotEmpty()
   @IsString()
   taklif_body: string;
-
-  @IsNotEmpty()
-  @IsString()
-  taklif_answer: string;
-
-  @IsNotEmpty()
-  userId: number;
 }
