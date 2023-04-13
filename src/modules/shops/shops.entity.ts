@@ -1,6 +1,6 @@
-
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Category } from '../category/category.entity';
+import { Product } from '../product/product.entity';
 
 enum Status {
   Enabled = "enabled",
@@ -45,8 +45,9 @@ export class Shops extends BaseEntity {
   })
   shop_tovar: number;
 
-
   @ManyToOne(() => Category, (categorys) => categorys.shops)
   categorys: Category[]
 
+  @OneToMany(() => Product, (product) => product.shops)
+  product: Product[]
 }
