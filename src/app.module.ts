@@ -10,7 +10,10 @@ import { CategoryModule } from './modules/category/category.module';
 import { Category } from './modules/category/category.entity';
 import { ShopsModule } from './modules/shops/shops.module';
 import { Shops } from './modules/shops/shops.entity';
-import { Driver } from './modules/drivers/driver.entity';
+import { ProductModule } from './modules/product/product.module';
+import { Product } from './modules/product/product.entity';
+import { ProductTypeModule } from './modules/product_type/product_type.module';
+import { ProductType } from './modules/product_type/product_type.entity';
 
 @Module({
   imports: [
@@ -22,13 +25,15 @@ import { Driver } from './modules/drivers/driver.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops, Driver],
+      entities: [User, Category, Shops, Product, ProductType],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
     CategoryModule,
     ShopsModule,
+    ProductModule,
+    ProductTypeModule,
   ],
 })
 export class AppModule {}

@@ -12,7 +12,9 @@ export class ShopsService {
   ) {}
 
   findAll() {
-    return this.shopsRepo.find();
+    return this.shopsRepo.find({
+      relations:{product: true}
+    });
   }
 
   async findOne(id: number) {
