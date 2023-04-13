@@ -3,9 +3,11 @@ import {
   Column,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Category } from '../category/category.entity';
+import { Product } from '../product/product.entity';
 
 enum Status {
   Enabled = 'enabled',
@@ -52,4 +54,7 @@ export class Shops extends BaseEntity {
 
   @ManyToOne(() => Category, (categorys) => categorys.shops)
   categorys: Category[];
+
+  @OneToMany(() => Product, (product) => product.shops)
+  product: Product[];
 }
