@@ -1,10 +1,17 @@
-import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Shops } from '../shops/shops.entity';
 import { ProductType } from '../product_type/product_type.entity';
 
 enum Status {
-  Enabled = "enabled",
-  Disabled = "desabled"
+  Enabled = 'enabled',
+  Disabled = 'desabled',
 }
 
 @Entity({ name: 'product' })
@@ -33,8 +40,8 @@ export class Product extends BaseEntity {
   product_status: string;
 
   @ManyToOne(() => Shops, (shops) => shops.product)
-  shops: Shops[]
+  shops: Shops[];
 
   @OneToMany(() => ProductType, (product_type) => product_type.product)
-  product_type: ProductType[]
+  product_type: ProductType[];
 }

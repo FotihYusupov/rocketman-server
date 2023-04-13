@@ -1,9 +1,15 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Shops } from '../shops/shops.entity';
 
 enum Status {
-  On = "on",
-  Off = "off"
+  On = 'on',
+  Off = 'off',
 }
 
 @Entity({ name: 'category' })
@@ -32,5 +38,5 @@ export class Category extends BaseEntity {
   category_shops: number;
 
   @OneToMany(() => Shops, (shops) => shops.categorys)
-  shops: Shops[]
+  shops: Shops[];
 }

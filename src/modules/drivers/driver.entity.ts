@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Order } from '../orders/entities/order.entity';
 
 @Entity({ name: 'drivers' })
 export class Driver extends BaseEntity {
@@ -32,4 +33,7 @@ export class Driver extends BaseEntity {
     nullable: false
   })
   chat_id: string
+
+  @OneToMany(() => Order, (orders) => orders.driver)
+  orders: Order[];
 }
