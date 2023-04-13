@@ -8,31 +8,32 @@ import { UpdateCategoryDto } from './dto/update-category.dto';
 @Injectable()
 export class CategoryService {
   constructor(
-    @InjectRepository(Category) private readonly categoryRepo: Repository<Category>,
+    @InjectRepository(Category)
+    private readonly categoryRepo: Repository<Category>,
   ) {}
 
   findAll() {
-    return this.categoryRepo.find( {
-      relations:{shops: true}
+    return this.categoryRepo.find({
+      relations: { shops: true },
     });
   }
 
   async findOne(id: number) {
-    return await this.categoryRepo.findOneBy({ id })
+    return await this.categoryRepo.findOneBy({ id });
   }
 
   async create(data: CreateCategoryDto) {
-    const category = await this.categoryRepo.create(data)
-    this.categoryRepo.save(category)
-    return category
+    const category = await this.categoryRepo.create(data);
+    this.categoryRepo.save(category);
+    return category;
   }
 
   async update(id: number, body: UpdateCategoryDto) {
-    await this.categoryRepo.update({ id }, body)
-    return await this.categoryRepo.findOneBy({ id })
+    await this.categoryRepo.update({ id }, body);
+    return await this.categoryRepo.findOneBy({ id });
   }
 
   async delete(id: number) {
-    return await this.categoryRepo.delete({ id })
+    return await this.categoryRepo.delete({ id });
   }
 }

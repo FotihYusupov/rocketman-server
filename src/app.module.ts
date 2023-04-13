@@ -17,6 +17,8 @@ import { ProductType } from './modules/product_type/product_type.entity';
 import { Driver } from './modules/drivers/driver.entity';
 import { TaklifModule } from './modules/takliflar/takliflar.module';
 import { Taklif } from './modules/takliflar/takliflar.entity';
+import { ClientsModule } from './modules/clients/clients.module';
+import { Client } from './modules/clients/entities/client.entity';
 
 @Module({
   imports: [  
@@ -28,7 +30,7 @@ import { Taklif } from './modules/takliflar/takliflar.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops, Product, ProductType, Driver, Taklif],
+      entities: [User, Category, Shops, Product, ProductType, Driver, Taklif, Client],
       synchronize: true,
     }),
     UserModule,
@@ -37,7 +39,8 @@ import { Taklif } from './modules/takliflar/takliflar.entity';
     ShopsModule,
     ProductModule,
     ProductTypeModule,
-    TaklifModule
+    TaklifModule,
+    ClientsModule,
   ],
 })
 export class AppModule {}
