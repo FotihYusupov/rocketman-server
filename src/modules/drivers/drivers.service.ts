@@ -18,7 +18,9 @@ export class DriversService {
   }
 
   findAll() {
-    return this.DriverRepo.find();
+    return this.DriverRepo.find({
+      relations: { orders: true },
+    });
   }
 
   async findOne(id: number) {

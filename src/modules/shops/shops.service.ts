@@ -13,26 +13,26 @@ export class ShopsService {
 
   findAll() {
     return this.shopsRepo.find({
-      relations:{product: true}
+      relations: { product: true },
     });
   }
 
   async findOne(id: number) {
-    return await this.shopsRepo.findOneBy({ id })
+    return await this.shopsRepo.findOneBy({ id });
   }
 
   async create(data: CreateShopsDto) {
-    const shops = await this.shopsRepo.create(data)
-    this.shopsRepo.save(shops)
-    return shops
+    const shops = await this.shopsRepo.create(data);
+    this.shopsRepo.save(shops);
+    return shops;
   }
 
   async update(id: number, body: UpdateShopsDto) {
-    await this.shopsRepo.update({ id }, body)
-    return await this.shopsRepo.findOneBy({ id })
+    await this.shopsRepo.update({ id }, body);
+    return await this.shopsRepo.findOneBy({ id });
   }
 
   async delete(id: number) {
-    return await this.shopsRepo.delete({ id })
+    return await this.shopsRepo.delete({ id });
   }
 }
