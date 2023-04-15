@@ -8,7 +8,7 @@ export class Client {
   @Column({ type: 'varchar', length: '64', nullable: false })
   client_name: string;
 
-  @Column({ type: 'int', length: '13', nullable: false })
+  @Column({ type: 'varchar', length: '20', nullable: false })
   client_telephone: string;
 
   //   @OneToMany(() => Orders, (orders) => orders.clients)
