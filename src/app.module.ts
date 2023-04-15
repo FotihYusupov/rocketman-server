@@ -17,6 +17,8 @@ import { ProductType } from './modules/product_type/product_type.entity';
 import { Driver } from './modules/drivers/driver.entity';
 import { TaklifModule } from './modules/takliflar/takliflar.module';
 import { Taklif } from './modules/takliflar/takliflar.entity';
+import { Payment } from './modules/payment/payment.entity';
+import { PaymentModule } from './modules/payment/payment.module';
 import { ClientsModule } from './modules/clients/clients.module';
 import { Client } from './modules/clients/entities/client.entity';
 import { OrdersModule } from './modules/orders/orders.module';
@@ -32,16 +34,17 @@ import { Order } from './modules/orders/entities/order.entity';
       port: 5432,
       host: process.env.PG_HOST,
       password: process.env.PG_PASSWORD,
-      entities: [User, Category, Shops, Product, ProductType, Driver, Taklif, Client, Order],
+      entities: [User, Category, Shops, Product, ProductType, Driver, Taklif, Client, Order, Payment],
       synchronize: true,
     }),
     UserModule,
     DriversModule,
     CategoryModule,
     ShopsModule,
+    TaklifModule,
+    PaymentModule,
     ProductModule,
     ProductTypeModule,
-    TaklifModule,
     ClientsModule,
     OrdersModule,
   ],

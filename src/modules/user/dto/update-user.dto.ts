@@ -13,7 +13,7 @@ export class UpdateUserDto {
 
   @IsNotEmpty()
   @IsString()
-  admin_password: string;
+  user_password: string;
 
   @IsNotEmpty()
   @IsString()
